@@ -1,16 +1,16 @@
 import java.time.LocalDate;
 
 public class Main {
-    public static boolean chekingTheYear(int year) {
+    public static boolean isLeapYear(int year) {
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
 
     public static void printYear(int year) {
-        boolean boneYear = chekingTheYear(year);
-        printYearresult(year, boneYear);
+        boolean boneYear = isLeapYear(year);
+        printYearResult(year, boneYear);
     }
 
-    public static void printYearresult(int year, boolean boneYaer) {
+    public static void printYearResult(int year, boolean boneYaer) {
         if (boneYaer) {
             System.out.println(year + " Весокостный");
         } else {
@@ -18,7 +18,7 @@ public class Main {
         }
     }
 
-    public static void printSeporator() {
+    public static void printSeparator() {
         System.out.println("++++++++++");
         System.out.println("--------");
     }
@@ -40,22 +40,23 @@ public class Main {
         task();
         task1();
         task2(1, 2024);
-        task3(95);
-        totalDaysDelivry(96);
+        task3();
+
 
 
     }
 
     public static void task() {
+        System.out.println("Задание 1");
         int[] issuesByMonths = {4, 6, 7, 9, 5, 12, 3, 7, 10, 6, 7, 1, 8};
-        printSeporator();
+        printSeparator();
         for (int i = 0; i < issuesByMonths.length; i++) {
             printIssues(issuesByMonths[i]);
             if ((i + 1) % 3 == 0) {
-                printSeporator();
+                printSeparator();
             }
         }
-        printSeporator();
+        printSeparator();
         int total = sum(issuesByMonths);
         printIssues(total);
     }
@@ -66,6 +67,7 @@ public class Main {
     }
 
     public static void task2(int oS, int yaaer) {
+        System.out.println("Задание 2");
         boolean deviceOld = determiningTheYearOfRealise(yaaer);
         System.out.print("Установите");
         if (deviceOld) {
@@ -85,20 +87,22 @@ public class Main {
         return yearDevice < currentYear;
     }
 
-
-
+    public static void task3() {
+        System.out.println("Задание 3");
+        System.out.println(totalDaysDelivery(80));
     }
 
-    public static String totalDaysDelivry(int distance) {
-        int dayDelivery = 1;
-        if (distance >= 20 && distance < 60) {
-            dayDelivery++;
-        } if (distance >= 60 && distance < 100) {
-            dayDelivery++;
-        } else {
-            return "Доставки нет";
-        }
 
-        return  "Потребуется дней" + dayDelivery;
+    public static String totalDaysDelivery(int distance) {
+        int dayDelivery = 1;
+        if (distance >= 20 && distance <= 60) {
+            dayDelivery++;
+        } else if (distance >= 60 && distance < 100) {
+            dayDelivery+=+2;
+        }
+        else if  (distance > 100) {
+                return "Доставки нет";
+            }
+        return  "Потребуется дней " + dayDelivery;
     }
 }
